@@ -8,9 +8,13 @@ print()
 
 mydata = cgi.FieldStorage()
 
-if mydata.getvalue("x") == "python":
-    confPython()
-    print("SUCCESS")
-
 def confPython():
-    sp.run(f"sudo docker run centos /bin/bash -c 'dnf install python3 -y; echo \"print('hello')\" > aa.py; python3 aa.py'",shell=True)
+    #sp.run(f"sudo docker run centos /bin/bash -c 'dnf install python3 -y; echo \"print('hello')\" > aa.py; python3 aa.py'",shell=True)
+    if mydata.getvalue("x") == "python":
+        print("SUCCESS")
+        return "OK"
+    else:
+        print("FAILED")
+        return "NOT_OK"
+
+confPython()
