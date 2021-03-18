@@ -10,24 +10,20 @@ mydata = cgi.FieldStorage()
 
 task = mydata.getvalue("x")
 
-if task == "python":
-    try:
-        confPython()
-        print("PYTHON SUCCESS")
-    except:
-        print("PYTHON FAILED")
-elif task == "httpd":
-    image_name = mydata.getvalue("image_name")
-    try:
-        confHttpd(image_name)
-        print("HTTPD SUCCESS")
-    except:
-        print("HTTPD FAILED")
-else:
-    print("FAILED")
-
 def confPython():
-    sp.run(f"sudo docker run centos /bin/bash -c 'dnf install python3 -y; echo \"print('hello')\" > aa.py; python3 aa.py'",shell=True)
+    res = sp.getoutput(f"sudo docker run centos /bin/bash -c 'dnf install python3 -y; echo \"print('hello')\" > aa.py; python3 aa.py'")
+    return res
 
 def confHttpd(image_name):
-    sp.run(f"sudo docker run {image_name} /bin/bash -c 'dnf install httpd -y; /usr/sbin/httpd'", shell=True)
+    res = sp.getoutput(f"sudo docker run {image_name} /bin/bash -c 'dnf install httpd -y; /usr/sbin/httpd'")
+    return res
+
+if task == "python":
+    confPython()
+    print("PYTHON SUCCESS")
+elif task == "httpd":
+    image_name = mydata.getvalue("image_name")
+    confHttpd(image_name)
+    print("HTTPD SUCCESS")
+else:
+    print("FAILED")
