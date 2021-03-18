@@ -15,7 +15,7 @@ if task == "python":
         confPython()
         print("SUCCESS")
     except:
-        print("FAILED")
+        print("PYTHON FAILED")
 elif task == "httpd":
     image_name = mydata.getvalue("image_name")
     try:
