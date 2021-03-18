@@ -13,7 +13,7 @@ task = mydata.getvalue("x")
 if task == "python":
     try:
         confPython()
-        print("SUCCESS")
+        print("PYTHON SUCCESS")
     except:
         print("PYTHON FAILED")
 elif task == "httpd":
