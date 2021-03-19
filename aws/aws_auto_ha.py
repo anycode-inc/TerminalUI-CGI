@@ -25,14 +25,27 @@ if x == "launch_instance":
     launchInstance(image_id, instance_type, count, subnet_id, security_group_id, key_name)
     print("EC2 instance is being created...")
 elif x == "create_ebs_volume":
-    createEbsVolume(availabilityZone, volumeType, size, key, value)
+    availability_zone = mydata.getvalue("availability_zone")
+    volume_type = mydata.getvalue("volume_type")
+    size = mydata.getvalue("size")
+    key = mydata.getvalue("key")
+    value = mydata.getvalue("value")
+    createEbsVolume(availability_zone, volume_type, size, key, value)
     print("EBS Volume is being created...")
 elif x == "attach_ebs_volume":
-    attachEbsVolume(volumeID, instanceID, deviceName)
+    volume_id = mydata.getvalue("volume_id")
+    instance_id = mydata.getvalue("instance_id")
+    device_name = mydata.getvalue("device_name")
+    attachEbsVolume(volume_id, instance_id, device_name)
 elif x == "upload_to_bucket":
-    uploadFileToBucket(localFileLocation, s3BucketLocation, acl)
+    local_file_location = mydata.getvalue("local_file_location")
+    s3_bucket_location = mydata.getvalue("s3_bucket_location")
+    acl = mydata.getvalue("acl")
+    uploadFileToBucket(local_file_location, s3_bucket_location, acl)
     print("File is being uploaded...")
 elif x == "create_distribution":
-    createDistribution(bucketName, defaultRootObject)
+    bucket_name = mydata.getvalue("bucket_name")
+    default_root_object = mydata.getvalue("default_root_object")
+    createDistribution(bucket_name, default_root_object)
 else:
     print("AWS RESOURCE CREATION FAILED")
