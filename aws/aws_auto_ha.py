@@ -16,6 +16,12 @@ mydata = cgi.FieldStorage()
 task = mydata.getvalue("x")
 
 if x == "launch_instance":
+    image_id = mydata.getvalue("image_id")
+    instance_type = mydata.getvalue("instance_type")
+    count = mydata.getvalue("count")
+    subnet_id = mydata.getvalue("subnet_id")
+    security_group_id = mydata.getvalue("security_group_id")
+    key_name = mydata.getvalue("key_name")
     launchInstance(image_id, instance_type, count, subnet_id, security_group_id, key_name)
     print("EC2 instance is being created...")
 elif x == "create_ebs_volume":
