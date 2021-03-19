@@ -11,7 +11,7 @@ mydata = cgi.FieldStorage()
 command = mydata.getvalue("command")
 
 def run_command():
-    res = sp.getoutput(f"{command}")
+    res = sp.getoutput(command)
     print(res)
 
 run_command()
