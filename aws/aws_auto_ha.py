@@ -13,7 +13,7 @@ print()
 
 mydata = cgi.FieldStorage()
 
-task = mydata.getvalue("x")
+x = mydata.getvalue("x")
 
 if x == "launch_instance":
     image_id = mydata.getvalue("image_id")
