@@ -19,7 +19,7 @@ if x == "launch_instance":
     launchInstance(image_id, instance_type, count, subnet_id, security_group_id, key_name)
     print("EC2 instance is being created...")
 elif x == "create_ebs_volume":
-    createEbsVolume(availabilityZone, volumeType, size, key, value, )
+    createEbsVolume(availabilityZone, volumeType, size, key, value)
     print("EBS Volume is being created...")
 elif x == "attach_ebs_volume":
     attachEbsVolume(volumeID, instanceID, deviceName)
