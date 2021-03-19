@@ -5,8 +5,6 @@ from jinja2 import Environment, FileSystemLoader
 import time
 import cgi
 
-from printHead.printHead import header
-
 print("content-type: text/html")
 print()
 
@@ -44,3 +42,5 @@ elif node == "slave":
     configure_kube_slave_playbook(kube_join_command)
     sp.run("ansible-playbook ./temp/kube_slave.yml", shell=True)
     print("KUBE SLAVE CONFIGURATION SUCCESSFUL")
+else:
+    print("KUBE CLUSTER CONFIGURATION FAILED")
